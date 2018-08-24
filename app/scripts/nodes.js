@@ -48,7 +48,7 @@ nodes.nodeList = {
         'estimateGas': true,
         'service': 'rpc.akroma.io',
         'lib': new nodes.customNode('https://rpc.akroma.io', '')
-    }    
+    }
 };
 
 nodes.ethPrice = require('./nodeHelpers/ethPrice');
