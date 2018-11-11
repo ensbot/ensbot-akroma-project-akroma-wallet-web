@@ -377,7 +377,7 @@ gulp.task("pushlive", ["getVersion"], function() {
   return gulp
     .src("*.js", { read: false })
     .pipe(
-      shell([`git subtree push --prefix dist origin release/${versionNum}`])
+      shell([`git subtree push --prefix dist origin gh-pages`])
     )
     .pipe(notify(onSuccess("Push Live")));
 });
