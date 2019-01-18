@@ -82,7 +82,7 @@ class MewConnectEth {
     this.comm.sendRtcMessage('signMessage', hashToSign);
   }
 
-  signTransaction(eTx, rawTx, txData) {
+  signTransaction(eTx, rawTx, tokenDetails) {
     const sendTxData = {
       nonce: rawTx.nonce,
       gasPrice: rawTx.gasPrice,
@@ -92,6 +92,17 @@ class MewConnectEth {
       chainId: rawTx.chainId,
       gas: rawTx.gasLimit
     };
+
+    if (tokenDetails !== 'otherType') {
+      sendTxData.currency = {
+        symbol: tokenDetails ? tokenDetails.symbol : 'ETH',
+        decimals: tokenDetails ? tokenDetails.decimal : 18
+      };
+      if (tokenDetails) {
+        if(tokenDetails.address) sendTxData.currency.address = tokenDetails.address;
+      }
+    }
+
     this.comm.sendRtcMessage('signTx', JSON.stringify(sendTxData));
   }
 
@@ -118,7 +129,7 @@ class MewConnectEth {
 
   static checkBrowser() {
     const browser = window.browser;
-    const version = browser.version.split(0, 1)[0]
+    const version = browser.version.split('.')[0];
     /*
     * Chrome > 23
     * Firefox > 22
@@ -134,7 +145,7 @@ class MewConnectEth {
         // if (+version >= 12) {
         //   return MewConnectEth.buildBrowserResult(false, '', '');
         // } else if (+version === 11) {
-          return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + browser.version);
+        return MewConnectEth.buildBrowserResult(true, 'Safari', 'version: ' + browser.version);
         // }
       } else if (browser.name === 'ie') {
         return MewConnectEth.buildBrowserResult(true, 'Internet Explorer', '', true);
@@ -163,8 +174,8 @@ class MewConnectEth {
           } else {
             return MewConnectEth.buildBrowserResult(false, '', '');
           }
-        } catch(e) {
-          console.error(e)
+        } catch (e) {
+          console.error(e);
         }
       }
     }
