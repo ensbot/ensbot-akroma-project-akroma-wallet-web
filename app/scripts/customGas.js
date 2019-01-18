@@ -448,4 +448,17 @@ to:         '0x46b9ad944d1059450da1163511069c718f699d31',
 gasLimit:   200000,
 data:       '',
 msg:        'Credits token sale https://credits.com'
+},
+{
+// ABBC Cash (ABCH) Token Sale
+to:         '0xcc7d26d8ea6281bb363c8448515f2c61f7bc19f0',
+gasLimit:   250000,
+data:       '',
+msg:        'ABCH Token Sale. - https://abbcfoundation.com'
+},{
+// TOK (TOK) Token Sale
+to:         '0x9a49f02e128a8e989b443a8f94843c0918bf45e7',
+gasLimit:   60000,
+data:       '',
+msg:        'TOK token sale https://www.tokok.com/'
 }]

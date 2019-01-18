@@ -101,7 +101,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
           localCallback
         );
 
-        // Sign via Digital Bitbox
+        // Sign via BitBox
       } else if (typeof hwType != "undefined" && hwType == "digitalBitbox") {
         var msg = ethUtil.hashPersonalMessage(ethUtil.toBuffer(thisMessage));
         var localCallback = function(signed, error) {
@@ -202,7 +202,7 @@ var signMsgCtrl = function($scope, $sce, walletService) {
         //TODO reset ui when rtc disconnects
         // var msg = Buffer.from(thisMessage).toString("hex");
         var connectApp = new MewConnectEth();
-        var mewConnect = MewConnect.instance;
+        var mewConnect =globalFuncs.MEWconnectStatus.MEWconnect;
         connectApp.setMewConnect(mewConnect);
         mewConnect.on("signMessage", function(data) {
           $scope.signMsg.signedMsg = JSON.stringify(
