@@ -1,0 +1,13 @@
+{
+  "name": "Akroma Web Wallet",
+  "version": "3.30.1-akroma-4",
+  "description": "An NPM dist of MyEtherWallet. For easier downloading & updating via CLI.",
+  "author": "MyEtherWallet",
+  "license": "ISC",
+  "devDependencies": {
+    "open": "0.0.5"
+  },
+  "bin": {
+    "mew": "bin/startMEW.js"
+  }
+}
